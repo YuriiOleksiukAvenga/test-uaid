@@ -1,11 +1,10 @@
 const path = require("path");
 
 exports.createPages = async ({actions, graphql}) => {
-    const {createPage} = actions;
+    const {createPage, createRedirect } = actions;
     const indexPageTemplate = path.resolve('./src/templates/index-page-template.js');
     const productsPageTemplate = path.resolve('./src/templates/products-page-template.js');
     const singleProductPageTemplate = path.resolve('./src/templates/single-product-page-template.js');
-
     /*
     * Query should be like that:
     * query Locales {
@@ -123,10 +122,10 @@ exports.createPages = async ({actions, graphql}) => {
                 });
 
                 // Create index page
-                /*let indexPagePath = '/'
+                let indexPagePath = '/home'
 
                 if (language !== defaultLanguage) {
-                    indexPagePath = `${language}`
+                    indexPagePath = `${language}/home`
                 }
 
                 createPage({
@@ -139,13 +138,24 @@ exports.createPages = async ({actions, graphql}) => {
                         mainNavigation
                     },
                     defer: true
-                });*/
+                });
             })
-
-           
         })
     })
 
+    createRedirect({
+        fromPath: `/`,
+        isPermanent: true,
+        redirectInBrowser: false,
+        toPath: `/home`,
+    })
+
+    createRedirect({
+        fromPath: `/uk`,
+        isPermanent: true,
+        redirectInBrowser: false,
+        toPath: `/uk/home`,
+    })
 
 }
 

@@ -5,9 +5,7 @@ import CustomLink from "../components/custom-link";
 import {graphql} from "gatsby";
 
 const IndexPage = ({ pageContext, data }) => {
-    const homepageSlider = data.datoCmsHomePage.slider;
-    
-    console.log(pageContext)
+    const homepageSlider = data?.datoCmsHomePage?.slider;
 
     return (
         <Layout 

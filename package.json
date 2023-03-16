@@ -27,7 +27,7 @@
     "react-datocms": "^4.0.9",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.8",
-    "swiper": "^9.1.0",
+    "swiper": "^9.1.0"
   },
   "devDependencies": {
     "gatsby-plugin-sass": "^6.7.0",

@@ -2,13 +2,10 @@ import * as React from "react"
 import ProductCardTemplate from "../components/product-card-template";
 import Breadcrumbs from "../components/breadcrumbs";
 import Layout from "../components/layout";
-import {useContext} from "react";
-import ThemeContext from "../context/ThemeContext";
 import { getTranslatedText } from "../i18n";
 import {graphql} from "gatsby";
 
 const ProductsPage = ({ pageContext, data }) => {
-    const { currentLanguage } = useContext(ThemeContext)
     console.log('data > ', data)
     
     const productsListStyles = {
@@ -26,7 +23,7 @@ const ProductsPage = ({ pageContext, data }) => {
             logo={pageContext.logo}
             mainNavigation={pageContext.mainNavigation}
         >
-            <Breadcrumbs title={getTranslatedText(currentLanguage, 'products')}/>
+            <Breadcrumbs title={getTranslatedText(pageContext.language, 'products')}/>
             <div style={productsListStyles} className="container">
                 {data.allDatoCmsProduct.nodes.map(product => <ProductCardTemplate key={product.id} product={product}/>)}
             </div>

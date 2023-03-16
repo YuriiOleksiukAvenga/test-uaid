@@ -4,12 +4,14 @@ import {useContext, useEffect} from "react";
 import ThemeContext from "../context/ThemeContext";
 
 const Layout = ({ children, languages = [], language, logo, mainNavigation }) => {
-    const { updateLanguages, updateCurrentLanguage, updateDefaultLanguage } = useContext(ThemeContext);
+    // const { updateLanguages, updateCurrentLanguage, updateDefaultLanguage } = useContext(ThemeContext);
 
     useEffect(() => {
-        updateLanguages(languages)
-        updateDefaultLanguage(languages[0])
-        updateCurrentLanguage(language)
+        if (languages) {
+            // updateLanguages(languages)
+            // updateDefaultLanguage(languages[0])
+            // updateCurrentLanguage(language)
+        }
     })
 
     return (

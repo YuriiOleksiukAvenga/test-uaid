@@ -10,9 +10,9 @@ function ThemeProvider({ children }) {
     
     const valueToShare = {
         languages,
-        updateLanguages: (languagesArr) => {
+        /*updateLanguages: (languagesArr) => {
             setLanguages(languagesArr);
-        },
+        },*/
         currentLanguage,
         updateCurrentLanguage: (newLanguage) => {
             setCurrentLanguage(newLanguage);

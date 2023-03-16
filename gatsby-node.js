@@ -122,7 +122,7 @@ exports.createPages = async ({actions, graphql}) => {
                         logo,
                         mainNavigation
                     },
-                    // defer: true
+                    defer: true
                 });
 
                 // Create index page

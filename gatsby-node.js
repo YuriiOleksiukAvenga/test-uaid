@@ -60,9 +60,6 @@ exports.createPages = async ({actions, graphql}) => {
                     }
                 }
             `).then((result) => {
-                
-                console.log(result.data.datoCmsSiteSetting.logo)
-
                 const logo = result.data.datoCmsSiteSetting.logo;
                 const mainNavigation = result.data.datoCmsSiteSetting.mainNavigation;
                 
@@ -126,7 +123,7 @@ exports.createPages = async ({actions, graphql}) => {
                 });
 
                 // Create index page
-                let indexPagePath = '/'
+                /*let indexPagePath = '/'
 
                 if (language !== defaultLanguage) {
                     indexPagePath = `${language}`
@@ -142,7 +139,7 @@ exports.createPages = async ({actions, graphql}) => {
                         mainNavigation
                     },
                     defer: true
-                });
+                });*/
             })
 
            

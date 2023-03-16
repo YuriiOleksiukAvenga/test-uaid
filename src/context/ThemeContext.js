@@ -1,7 +1,17 @@
 import * as React from "react"
 import {createContext, useEffect, useState} from "react";
 
-const ThemeContext = createContext()
+const deffaultState = {
+    languages: [],
+    currentLanguage: '',
+    defaultLanguage: '',
+    updateLanguages: () => {},
+    updateCurrentLanguage: () => {},
+    formatCurrency: () => {},
+    updateDefaultLanguage: () => {},
+}
+
+const ThemeContext =  createContext(deffaultState)
 
 function ThemeProvider({ children }) {
     const [languages, setLanguages] = useState([])
@@ -10,9 +20,9 @@ function ThemeProvider({ children }) {
     
     const valueToShare = {
         languages,
-        /*updateLanguages: (languagesArr) => {
+        updateLanguages: (languagesArr) => {
             setLanguages(languagesArr);
-        },*/
+        },
         currentLanguage,
         updateCurrentLanguage: (newLanguage) => {
             setCurrentLanguage(newLanguage);

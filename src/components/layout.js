@@ -1,7 +1,5 @@
 import * as React from 'react'
 import Header from "./header";
-import {useContext, useEffect} from "react";
-import ThemeContext from "../context/ThemeContext";
 
 const Layout = ({ children, languages = [], language, logo, mainNavigation }) => {
 
@@ -14,21 +12,10 @@ const Layout = ({ children, languages = [], language, logo, mainNavigation }) =>
     })*/
 
     return (
-        <ThemeContext.Consumer>
-            {theme => {
-                theme.updateLanguages(languages)
-                theme.updateDefaultLanguage(languages[0])
-                theme.updateCurrentLanguage(language)
-                
-                return (
-                    <div>
-                        <Header logo={logo} mainNavigation={mainNavigation}/>
-                        {children}
-                    </div>
-                )
-            }}
-            
-        </ThemeContext.Consumer>
+        <div>
+            <Header logo={logo} mainNavigation={mainNavigation}/>
+            {children}
+        </div>
     )
 }
 

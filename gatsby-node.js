@@ -150,12 +150,5 @@ exports.createPages = async ({actions, graphql}) => {
         toPath: `/home`,
     })
 
-    createRedirect({
-        fromPath: `/uk`,
-        isPermanent: true,
-        redirectInBrowser: false,
-        toPath: `/uk/home`,
-    })
-
 }
 

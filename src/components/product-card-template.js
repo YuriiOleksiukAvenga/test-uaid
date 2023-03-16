@@ -1,12 +1,8 @@
 import * as React from "react"
 import CustomLink from "./custom-link";
-import {useContext} from "react";
-import ThemeContext from "../context/ThemeContext";
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 const ProductCardTemplate = ({product}) => {
-    const { formatCurrency } = useContext(ThemeContext)
-    
     const productThumb = product.hasOwnProperty('gallery') && product?.gallery?.length ? getImage(product.gallery[0]) : null
     const productAlt = productThumb && productThumb.hasOwnProperty('alt') && productThumb.alt.length ? productThumb.alt : ""
     
@@ -16,7 +12,7 @@ const ProductCardTemplate = ({product}) => {
                 {productThumb && <GatsbyImage image={productThumb} alt={productAlt}/>}
             </CustomLink>
             <h3 className="product-card__title">{product.title}</h3>
-            <span className="product-card__price">{formatCurrency(product.price)}</span>
+            <span className="product-card__price">{product.price}</span>
         </div>
     )
 }

@@ -2,19 +2,9 @@ import * as React from "react"
 import ProductCardTemplate from "../components/product-card-template";
 import Breadcrumbs from "../components/breadcrumbs";
 import Layout from "../components/layout";
-import { getTranslatedText } from "../i18n";
 import {graphql} from "gatsby";
 
 const ProductsPage = ({ pageContext, data }) => {
-    
-    const productsListStyles = {
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gridColumnGap: "24px",
-        gridRowGap: "24px",
-        padding: "120px 12px"
-    }
-    
     return (
         <Layout
             languages={pageContext.languages}
@@ -22,8 +12,8 @@ const ProductsPage = ({ pageContext, data }) => {
             logo={pageContext.logo}
             mainNavigation={pageContext.mainNavigation}
         >
-            <Breadcrumbs title={getTranslatedText(pageContext.language, 'products')}/>
-            <div style={productsListStyles} className="container">
+            <Breadcrumbs/>
+            <div className="container product-list">
                 {data.allDatoCmsProduct.nodes.map(product => <ProductCardTemplate key={product.id} product={product}/>)}
             </div>
         </Layout>

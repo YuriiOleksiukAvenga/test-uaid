@@ -3,13 +3,11 @@ import Breadcrumbs from "../components/breadcrumbs";
 // import Layout from "../components/layout";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from 'swiper';
-import {useContext, useState} from "react";
-import ThemeContext from "../context/ThemeContext";
+import {useState} from "react";
 import {getImage, GatsbyImage} from "gatsby-plugin-image";
 import {graphql} from "gatsby";
 
 const SingleProductPageTemplate = ({ data }) => {
-    const { formatCurrency } = useContext(ThemeContext)
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     
     const productData = data.datoCmsProduct;
@@ -50,7 +48,7 @@ const SingleProductPageTemplate = ({ data }) => {
                     </div>
                     <div className="product__details">
                         <h2 className="product__subtitle">{productData.subtitle}</h2>
-                        <h3 className="product__price">{formatCurrency(productData.price)}</h3>
+                        <h3 className="product__price">{productData.price}</h3>
                     </div>
                 </div>
             </section>

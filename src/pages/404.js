@@ -1,47 +1,99 @@
 import * as React from "react"
-import { Link } from "gatsby"
-
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+import Layout from "../components/layout";
+import CustomLink from "../components/custom-link";
+import { useEffect, useRef } from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
 const NotFoundPage = () => {
-  return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
+    const ghostEyes = useRef(null)
+    
+    const data = useStaticQuery(graphql`
+        {
+            datoCmsSiteSetting {
+                logo {
+                    alt
+                    url
+                }
+                mainNavigation {
+                    link
+                    title
+                }
+            }
+        }
+    `)
+    
+    useEffect(() => {
+        let pageX = window.innerWidth;
+        let pageY = window.innerHeight;
+        let mouseY=0;
+        let mouseX=0;
+        
+        const handleMouseMove = (event) => {
+            let mouseY = event.pageY;
+            let yAxis = (pageY/2-mouseY)/pageY*300;
+            //horizontalAxis
+            let mouseX = event.pageX / -pageX;
+            let xAxis = -mouseX * 100 - 100;
+
+            ghostEyes.current.style.transform = `translate(${xAxis}%, -${yAxis}%)`;
+        }
+        
+        window.addEventListener('mousemove', handleMouseMove)
+        
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove)
+        }
+        
+        
+    }, [])
+    
+    return (
+        <Layout
+            languages={[]}
+            // language={pageContext.language}
+            logo={data.datoCmsSiteSetting.logo}
+            mainNavigation={data.datoCmsSiteSetting.mainNavigation}
+        >
+            <main className="not-found-page">
+                <div className="box">
+                    <div className="box__ghost">
+                        <div className="symbol"></div>
+                        <div className="symbol"></div>
+                        <div className="symbol"></div>
+                        <div className="symbol"></div>
+                        <div className="symbol"></div>
+                        <div className="symbol"></div>
+
+                        <div className="box__ghost-container">
+                            <div ref={ghostEyes} className="box__ghost-eyes">
+                                <div className="box__eye-left"></div>
+                                <div className="box__eye-right"></div>
+                            </div>
+                            <div className="box__ghost-bottom">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div className="box__ghost-shadow"></div>
+                    </div>
+
+                    <div className="box__description">
+                        <div className="box__description-container">
+                            <div className="box__description-title">Whoops!</div>
+                            <div className="box__description-text">It seems like we couldn't find the page you were looking
+                                for
+                            </div>
+                        </div>
+                        
+                        <CustomLink to="/" className="box__button">Go Home</CustomLink>
+                    </div>
+                </div>
+            </main>
+        </Layout>
+    )
 }
 
 export default NotFoundPage

@@ -6,7 +6,6 @@ import { getTranslatedText } from "../i18n";
 import {graphql} from "gatsby";
 
 const ProductsPage = ({ pageContext, data }) => {
-    console.log('data > ', data)
     
     const productsListStyles = {
         display: "grid",

@@ -1,6 +1,6 @@
 import * as React from "react"
 import Breadcrumbs from "../components/breadcrumbs";
-import Layout from "../components/layout";
+// import Layout from "../components/layout";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs } from 'swiper';
 import {useContext, useState} from "react";
@@ -8,19 +8,14 @@ import ThemeContext from "../context/ThemeContext";
 import {getImage, GatsbyImage} from "gatsby-plugin-image";
 import {graphql} from "gatsby";
 
-const SingleProductPageTemplate = ({ pageContext, data }) => {
+const SingleProductPageTemplate = ({ data }) => {
     const { formatCurrency } = useContext(ThemeContext)
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     
     const productData = data.datoCmsProduct;
     
     return (
-        <Layout
-            languages={pageContext.languages}
-            language={pageContext.language}
-            logo={pageContext.logo}
-            mainNavigation={pageContext.mainNavigation}
-        >
+        <div>
             <Breadcrumbs title={productData.title}/>
             <section className="product__head">
                 <div className="container">
@@ -69,7 +64,7 @@ const SingleProductPageTemplate = ({ pageContext, data }) => {
                     </div>
                 </section>
             }
-        </Layout>
+        </div>
     )
 }
 

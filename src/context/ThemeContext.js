@@ -18,7 +18,6 @@ const ThemeProvider = ({ children }) => {
     const [defaultLanguage, setDefaultLanguage] = useState('')
     
     const updateLanguages = (languages) => {
-        console.log('updateLanguages >>> ', languages)
         setLanguages(languages)
     }
 

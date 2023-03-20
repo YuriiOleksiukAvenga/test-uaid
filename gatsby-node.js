@@ -2,7 +2,7 @@ const path = require("path");
 
 exports.createPages = async ({actions, graphql}) => {
     const {createPage, createRedirect } = actions;
-    const indexPageTemplate = path.resolve('./src/templates/index-page-template.js');
+    const indexPageTemplate = path.resolve('./src/pages/index.js');
     const productsPageTemplate = path.resolve('./src/templates/products-page-template.js');
     const singleProductPageTemplate = path.resolve('./src/templates/single-product-page-template.js');
     /*
@@ -122,10 +122,10 @@ exports.createPages = async ({actions, graphql}) => {
                 });
 
                 // Create index page
-                let indexPagePath = '/home'
+                let indexPagePath = '/'
 
                 if (language !== defaultLanguage) {
-                    indexPagePath = `${language}/home`
+                    indexPagePath = `/${language}`
                 }
 
                 createPage({
@@ -142,13 +142,5 @@ exports.createPages = async ({actions, graphql}) => {
             })
         })
     })
-
-    createRedirect({
-        fromPath: `/`,
-        isPermanent: true,
-        redirectInBrowser: false,
-        toPath: `/home`,
-    })
-
 }
 

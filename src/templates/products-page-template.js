@@ -2,9 +2,10 @@ import * as React from "react"
 import ProductCardTemplate from "../components/product-card-template";
 import Breadcrumbs from "../components/breadcrumbs";
 import Layout from "../components/layout";
-import {graphql} from "gatsby";
+import { graphql } from "gatsby";
 
 const ProductsPage = ({ pageContext, data }) => {
+    
     return (
         <Layout
             languages={pageContext.languages}

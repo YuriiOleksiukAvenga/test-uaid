@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from "gatsby";
 const NotFoundPage = () => {
     const ghostEyes = useRef(null)
     
-    /*const data = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql`
         {
             datoCmsSiteSetting {
                 logo {
@@ -20,9 +20,9 @@ const NotFoundPage = () => {
                 }
             }
         }
-    `)*/
+    `)
     
-    /*useEffect(() => {
+    useEffect(() => {
         let pageX = window.innerWidth;
         let pageY = window.innerHeight;
         let mouseY=0;
@@ -45,12 +45,12 @@ const NotFoundPage = () => {
         }
         
         
-    }, [])*/
+    }, [])
     
     return (
-        /*<Layout
-            // languages={[]}
-            // language={pageContext.language}
+        <Layout
+            languages={[]}
+            language={'en'}
             logo={data.datoCmsSiteSetting.logo}
             mainNavigation={data.datoCmsSiteSetting.mainNavigation}
         >
@@ -92,9 +92,7 @@ const NotFoundPage = () => {
                     </div>
                 </div>
             </main>
-        </Layout>*/
-        
-        <h1>404</h1>
+        </Layout>
     )
 }
 

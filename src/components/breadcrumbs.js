@@ -10,9 +10,7 @@ const Breadcrumbs = ({ title, breadcrumbs }) => {
         <section className="breadcrumbs" style={breadcrumbAreaStyles}>
             <div className="container">
                 <h1 className="title">{title}</h1>
-                <div className="breadcrumbs__links">
-                    
-                </div>
+                <div className="breadcrumbs__links"></div>
             </div>
         </section>
     )

@@ -29,10 +29,10 @@ const NotFoundPage = () => {
         let mouseX=0;
         
         const handleMouseMove = (event) => {
-            let mouseY = event.pageY;
+            mouseY = event.pageY;
             let yAxis = (pageY/2-mouseY)/pageY*300;
             //horizontalAxis
-            let mouseX = event.pageX / -pageX;
+            mouseX = event.pageX / -pageX;
             let xAxis = -mouseX * 100 - 100;
 
             ghostEyes.current.style.transform = `translate(${xAxis}%, -${yAxis}%)`;
@@ -43,14 +43,12 @@ const NotFoundPage = () => {
         return () => {
             window.removeEventListener('mousemove', handleMouseMove)
         }
-        
-        
     }, [])
     
     return (
         <Layout
             languages={[]}
-            language={'en'}
+            language={''}
             logo={data.datoCmsSiteSetting.logo}
             mainNavigation={data.datoCmsSiteSetting.mainNavigation}
         >

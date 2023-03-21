@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Header from "./header";
 import ThemeContext from '../context/ThemeContext'
-import {useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 
 const Layout = ({ children, languages = [], language, logo, mainNavigation }) => {
     

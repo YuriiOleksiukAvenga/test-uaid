@@ -47,8 +47,8 @@ const NotFoundPage = () => {
     
     return (
         <Layout
-            languages={[]}
-            language={''}
+            languages={['en']}
+            language={'en'}
             logo={data.datoCmsSiteSetting.logo}
             mainNavigation={data.datoCmsSiteSetting.mainNavigation}
         >

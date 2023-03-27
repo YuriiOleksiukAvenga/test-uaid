@@ -1,8 +1,8 @@
 import * as React from 'react'
 import Layout from "../components/layout";
 import { Swiper, SwiperSlide } from "swiper/react";
-import CustomLink from "../components/custom-link";
 import { graphql } from "gatsby";
+import styled from "styled-components";
 
 const IndexPage = ({data, pageContext}) => {
     const homepageSlider = data?.datoCmsHomePage?.slider;
@@ -10,7 +10,40 @@ const IndexPage = ({data, pageContext}) => {
     const logo = data.datoCmsSiteSetting.logo
     const mainNavigation = data.datoCmsSiteSetting.mainNavigation
     const languages = data.allDatoCmsSite.nodes[0].locales;
-    const currentLanguage = pageContext.hasOwnProperty('language') ? pageContext.language : languages[0]
+    const currentLanguage = pageContext.hasOwnProperty('language') ? pageContext.language : languages[0];
+    
+    const SlideBgWrapper = styled.div`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f4f5f7;
+      height: calc(100vh - 90px);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      text-align: center;
+    `
+
+    const ContainerWrapper = styled.div`
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 12px;
+    `
+    
+    const SliderTitleWrapper = styled.h2`
+      font-size: 60px;
+      line-height: 1.1;
+      color: #111;
+      margin-bottom: 30px;
+    `
+
+    const SliderSubtitleWrapper = styled.h2`
+      font-size: 16px;
+      line-height: 28px;
+      display: inline-block;
+      max-width: 550px;
+      margin: 0 auto 60px;
+    `
 
     return (
         <Layout 
@@ -21,20 +54,17 @@ const IndexPage = ({data, pageContext}) => {
         >
             <main>
                 {
-                    homepageSlider && <Swiper className="home-slider">
+                    homepageSlider && <Swiper>
                         {homepageSlider.map((slide) => {
                             return (
                                 <SwiperSlide key={slide.id}>
-                                    <div className="home-slider__bg"
+                                    <SlideBgWrapper
                                          style={{backgroundImage: `url(${slide.backgroundImage.url})`}}>
-                                        <div className="container">
-                                            <h2 className="home-slider__title">{slide.title}</h2>
-                                            <p className="home-slider__subtitle">{slide.subtitle}</p>
-                                            <CustomLink className="home-slider__action" to={`/${slide.link.slug}`}>
-                                                {/*{getTranslatedText(currentLanguage, 'discoverNow')}*/}
-                                            </CustomLink>
-                                        </div>
-                                    </div>
+                                        <ContainerWrapper>
+                                            <SliderTitleWrapper>{slide.title}</SliderTitleWrapper>
+                                            <SliderSubtitleWrapper>{slide.subtitle}</SliderSubtitleWrapper>
+                                        </ContainerWrapper>
+                                    </SlideBgWrapper>
                                 </SwiperSlide>
                             )
                         })}

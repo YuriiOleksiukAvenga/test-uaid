@@ -1,4 +1,5 @@
-import './src/styles/index.scss'
+import './src/styles/404.scss'
+import 'swiper/css'
 
 import React from "react"
 

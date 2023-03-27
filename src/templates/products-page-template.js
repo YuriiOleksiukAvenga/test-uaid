@@ -3,6 +3,18 @@ import ProductCardTemplate from "../components/product-card-template";
 import Breadcrumbs from "../components/breadcrumbs";
 import Layout from "../components/layout";
 import { graphql } from "gatsby";
+import styled from "styled-components";
+
+const ProductsListWrapper = styled.div`
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  padding: 120px 12px;
+`
 
 const ProductsPage = ({ pageContext, data }) => {
     
@@ -14,9 +26,9 @@ const ProductsPage = ({ pageContext, data }) => {
             mainNavigation={pageContext.mainNavigation}
         >
             <Breadcrumbs/>
-            <div className="container product-list">
+            <ProductsListWrapper>
                 {data.allDatoCmsProduct.nodes.map(product => <ProductCardTemplate key={product.id} product={product}/>)}
-            </div>
+            </ProductsListWrapper>
         </Layout>
     )
 }

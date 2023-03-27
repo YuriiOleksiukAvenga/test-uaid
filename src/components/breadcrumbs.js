@@ -1,18 +1,30 @@
 import * as React from "react"
+import styled from "styled-components"
 
-const breadcrumbAreaStyles = {
-    padding: "80px 0",
-    backgroundColor: "#f4f5f7"
-}
+const BreadcrumbsWrapper = styled.section`
+  padding: 80px 0;
+  background-color: #f4f5f7;
+`
+
+const ContainerWrapper = styled.div`
+  max-width: 1170px;
+  width: 100%;
+  padding: 0 12px;
+  margin: 0 auto;
+`
+
+const TitleWrapper = styled.h1`
+  font-size: 36px;
+  font-weight: 600;
+`
 
 const Breadcrumbs = ({ title, breadcrumbs }) => {
     return (
-        <section className="breadcrumbs" style={breadcrumbAreaStyles}>
-            <div className="container">
-                <h1 className="title">{title}</h1>
-                <div className="breadcrumbs__links"></div>
-            </div>
-        </section>
+        <BreadcrumbsWrapper>
+            <ContainerWrapper>
+                <TitleWrapper>{title}</TitleWrapper>
+            </ContainerWrapper>
+        </BreadcrumbsWrapper>
     )
 }
 

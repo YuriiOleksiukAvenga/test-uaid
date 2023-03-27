@@ -86,7 +86,7 @@ const NotFoundPage = () => {
                             </div>
                         </div>
                         
-                        <CustomLink to="/" className="box__button">Go Home</CustomLink>
+                        <CustomLink to="/">Go Home</CustomLink>
                     </div>
                 </div>
             </main>

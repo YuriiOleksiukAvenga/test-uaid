@@ -55,7 +55,7 @@ exports.createPages = async ({actions, graphql}) => {
                 logo,
                 mainNavigation
             },
-            defer: true
+            // defer: true
         });
 
         // Create products page
@@ -74,7 +74,7 @@ exports.createPages = async ({actions, graphql}) => {
                 logo,
                 mainNavigation
             },
-            defer: true
+            // defer: true
         });
         
         const products = await graphql(`
@@ -105,7 +105,7 @@ exports.createPages = async ({actions, graphql}) => {
                     logo,
                     mainNavigation
                 },
-                defer: true
+                // defer: true
             });
         })
         

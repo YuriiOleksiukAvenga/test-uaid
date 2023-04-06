@@ -75,14 +75,14 @@ const Header = ({ logo, mainNavigation }) => {
                                     if (language === theme.currentLanguage) {
                                         return <LangSwitcherBtnWrapper active key={language}>{language}</LangSwitcherBtnWrapper>
                                     } else {
-                                        /*return <LangSwitcherBtnWrapper
+                                        return <LangSwitcherBtnWrapper
                                             as={Link}
                                             hrefLang={language}
                                             key={language}
                                             to={getTranslatedLangSwitcherUrl(window.location.pathname, language)}
                                         >
                                             {language}
-                                        </LangSwitcherBtnWrapper>*/
+                                        </LangSwitcherBtnWrapper>
                                     }
                                 })}
                             </div>

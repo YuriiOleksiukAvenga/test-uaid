@@ -113,5 +113,4 @@ exports.createPages = async ({actions, graphql}) => {
     })
 
     await Promise.all(promises)
-    
 }
